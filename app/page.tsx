@@ -1,5 +1,4 @@
 import Link from "next/link";
-
 async function fetchBlogs() {
   const res = await fetch("http://localhost:3000/api/blog", {
     next: {
@@ -33,7 +32,7 @@ export default async function Home() {
       {/* Blogs */}
       <div className="w-full flex  flex-col justify-center items-center">
         {posts?.map((post: any) => (
-          <div className="w-3/4 p-4 rounded-md mx-3 my-2 bg-slate-200 flex flex-col justify-center">
+          <div key={post.id}  className="w-3/4 p-4 rounded-md mx-3 my-2 bg-slate-200 flex flex-col justify-center">
             {/* Title and Action */}
             <div className="flex items-center my-3">
               <div className="mr-auto">
