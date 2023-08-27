@@ -1,15 +1,18 @@
 "use client";
-const apiBaseUrl = process.env.API_BASE_URL || '';
+
 import { useRouter } from "next/navigation";
-import { Fragment, useEffect, useRef} from "react";
+import { Fragment, useEffect, useRef } from "react";
 import { Toaster, toast } from "react-hot-toast";
 type UpdateBlogParams = {
   title: string;
   description: string;
   id: string;
 };
+const localUrl=process.env.API_BASE_URL;
 const updateBlog = async (data: UpdateBlogParams) => {
-  const res = fetch(`${apiBaseUrl}/api/blog/${data.id}`, {
+    
+
+  const res = fetch(`${localUrl}/api/blog/${data.id}`, {
     method: "PUT",
     body: JSON.stringify({ title: data.title, description: data.description }),
     //@ts-ignore
@@ -19,7 +22,7 @@ const updateBlog = async (data: UpdateBlogParams) => {
 };
 
 const deleteBlog = async (id: string) => {
-  const res = fetch(`${apiBaseUrl}/api/blog/${id}`, {
+  const res = fetch(`${localUrl}/api/blog/${id}`, {
     method: "DELETE",
     //@ts-ignore
     "Content-Type": "application/json",
@@ -28,7 +31,7 @@ const deleteBlog = async (id: string) => {
 };
 
 const getBlogById = async (id: string) => {
-  const res = await fetch(`${apiBaseUrl}/api/blog/${id}`);
+  const res = await fetch(`${localUrl}/api/blog/${id}`);
   const data = await res.json();
   return data.post;
 };
@@ -74,6 +77,8 @@ const EditBlog = ({ params }: { params: { id: string } }) => {
     toast.success("Blog Deleted", { id: "2" });
     router.push("/");
   };
+  
+    
   return (
     <Fragment>
       <Toaster />

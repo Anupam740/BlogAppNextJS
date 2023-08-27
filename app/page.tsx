@@ -1,6 +1,8 @@
 import Link from "next/link";
+
 async function fetchBlogs() {
-  const res = await fetch("http://localhost:3000/api/blog", {
+  const localUrl=process.env.API_BASE_URL;
+  const res = await fetch(`${localUrl}/api/blog`, {
     next: {
       revalidate: 10,
     },
@@ -12,6 +14,8 @@ async function fetchBlogs() {
 export default async function Home() {
   const posts = await fetchBlogs();
   console.log(posts);
+  
+  
 
   return (
     <main className="w-full h-full">
@@ -20,7 +24,7 @@ export default async function Home() {
           My FULL STACK Blog App With Next.js
         </h1>
       </div>
-      {/* Link */}
+      
       <div className="flex my-5">
         <Link
           href={"/blog/add"}
