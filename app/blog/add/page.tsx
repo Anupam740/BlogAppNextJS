@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { Fragment, useRef } from "react";
 import { Toaster, toast } from "react-hot-toast";
-const localUrl=process.env.API_BASE_URL;
+
 
 const postBlog = async ({
   title,
@@ -12,7 +12,7 @@ const postBlog = async ({
   title: string;
   description: string;
 }) => {
-  const res = fetch(`${localUrl}/api/blog`, {
+  const res = fetch("/api/blog", {
     method: "POST",
     body: JSON.stringify({ title, description }),
     //@ts-ignore
