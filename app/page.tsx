@@ -1,19 +1,19 @@
 import Link from "next/link";
 
-async function fetchBlogs() {
-  const localUrl=process.env.API_BASE_URL;
-  const res = await fetch(`${localUrl}/api/blog`, {
-    next: {
-      revalidate: 10,
-    },
-  });
-  const data = await res.json();
-  return data.posts;
-}
+ function fetchBlogs() {
+//   const localUrl=process.env.API_BASE_URL;
+//   const res = await fetch(`${localUrl}/api/blog`, {
+//     next: {
+//       revalidate: 10,
+//     },
+//   });
+//   const data = await res.json();
+//   return data.posts;
+// }
 
-export default async function Home() {
-  const posts = await fetchBlogs();
-  console.log(posts);
+// export default async function Home() {
+//   const posts = await fetchBlogs();
+//   console.log(posts);
   
   
 
