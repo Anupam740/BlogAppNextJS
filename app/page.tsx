@@ -9,9 +9,9 @@ import Link from "next/link";
 //   });
 //   const data = await res.json();
 //   return data.posts;
-// }
+}
 
-// export default async function Home() {
+export default  function Home() {
 //   const posts = await fetchBlogs();
 //   console.log(posts);
   
